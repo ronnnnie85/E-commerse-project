@@ -1,0 +1,36 @@
+from src.product import Product
+
+
+class Category:
+    """Класс, представляющий категорию товаров.
+
+    Атрибуты:
+        name (str): Название категории
+        description (str): Описание категории
+        products (list[Product]): Список товаров в категории
+
+    Атрибуты класса:
+        category_count (int): Счетчик количества созданных категорий
+        product_count (int): Счетчик общего количества товаров во всех категориях
+    """
+    name: str
+    description: str
+    products: list[Product]
+
+    category_count: int = 0
+    product_count: int = 0
+
+    def __init__(self, name: str, description: str, products: list[Product]) -> None:
+        """Инициализирует новый объект категории.
+
+        Args:
+            name: Название категории
+            description: Описание категории
+            products: Список товаров в категории
+        """
+        self.name = name
+        self.description = description
+        self.products = products
+
+        Category.category_count += 1
+        Category.product_count += len(products)
