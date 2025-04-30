@@ -13,6 +13,7 @@ class Category:
         category_count (int): Счетчик количества созданных категорий
         product_count (int): Счетчик общего количества товаров во всех категориях
     """
+
     name: str
     description: str
     products: list[Product]
