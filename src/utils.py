@@ -14,8 +14,10 @@ def read_data_json(file_path: str) -> List[Dict[str, Any]]:
         return []
 
 
-def load_data_from_json(data: List[Dict[str, Any]]) -> List[Category]:
+def load_data_from_json(file_path: str) -> List[Category]:
     """Создает объекты Category и Product из данных JSON."""
+    data = read_data_json(file_path)
+
     if not data:
         return []
 
