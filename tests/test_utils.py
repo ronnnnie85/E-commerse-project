@@ -1,7 +1,7 @@
 import json
 from unittest.mock import patch
 
-from src.utils import read_data_json, load_data_from_json
+from src.utils import load_data_from_json, read_data_json
 
 
 @patch("json.load")
@@ -20,7 +20,7 @@ def test_read_data_json_err_fnf(mock_file):
 
 @patch("json.load")
 @patch("builtins.open")
-def test_read_data_json(mock_file, mock_json):
+def test_read_data_json_err_decode(mock_file, mock_json):
     mock_json.side_effect = json.JSONDecodeError("", "", 0)
     assert read_data_json("") == []
 
@@ -32,7 +32,10 @@ def test_load_data_from_json(mock_read, test_json):
 
     assert len(result) == 1
     assert result[0].name == "Смартфоны"
-    assert result[0].description == "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни"
+    assert (
+        result[0].description
+        == "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни"
+    )
 
     assert len(result[0].products) == 3
     assert result[0].products[0].name == "Samsung Galaxy C23 Ultra"
@@ -49,9 +52,10 @@ def test_load_data_from_json_empty(mock_read):
 
 @patch("src.utils.read_data_json")
 def test_load_data_from_json_not_true(mock_read):
-    mock_read.return_value =  [
-  {
-    "name": "Смартфоны",
-    "description": "",
-  }]
+    mock_read.return_value = [
+        {
+            "name": "Смартфоны",
+            "description": "",
+        }
+    ]
     assert load_data_from_json("") == []
