@@ -1,6 +1,4 @@
-from typing import Self
-
-from mypy.stubgen import SelfTraverser
+from typing import Self, Optional
 
 
 class Product:
@@ -33,7 +31,17 @@ class Product:
         self.quantity = quantity
 
     @classmethod
-    def new_product(cls, params: dict) -> Self:
+    def new_product(cls, params: dict, list_products: Optional[list] = None) -> Self:
+        if list_products:
+            for product in list_products:
+                if product.name == params.get("name"):
+                    price = params.get("price", 0)
+                    product.quantity += params.get("quantity", 0)
+                    if product.price != price:
+                        product.price = max(price, product.price)
+
+                    return product
+
         return cls(**params)
 
 
@@ -47,6 +55,9 @@ class Product:
         if price <= 0:
             print("Цена не должна быть нулевая или отрицательная")
         else:
+            if self.__price > price and input("Вы уверены что цена должна быть понижена?(y/n)").strip().lower() != "y":
+                return
+
             self.__price = price
 
 
