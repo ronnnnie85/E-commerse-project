@@ -36,18 +36,23 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products)
 
-
     def add_product(self, product: Product) -> None:
+        """Добавляет товар в категорию.
+
+        Args:
+            product (Product): Товар для добавления в категорию"""
         self.__products.append(product)
         Category.product_count += 1
 
-
     @property
     def products(self) -> str:
+        """Возвращает форматированную строку со списком товаров категории.
+
+        Формат строки для каждого товара:
+        "Название, цена руб. Остаток количество шт."
+        """
         res = []
         for product in self.__products:
             res.append(f"{product.name}, {product.price} руб. Остаток {product.quantity} шт.\n")
 
         return "".join(res)
-
-
