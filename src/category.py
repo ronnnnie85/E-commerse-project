@@ -41,8 +41,9 @@ class Category:
 
         Args:
             product (Product): Товар для добавления в категорию"""
-        self.__products.append(product)
-        Category.product_count += 1
+        if isinstance(product, Product):
+            self.__products.append(product)
+            Category.product_count += 1
 
     @property
     def products(self) -> str:
