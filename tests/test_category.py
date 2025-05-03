@@ -13,7 +13,7 @@ def test_category1(category1, category2):
     )
     assert len(category2.products_in_list) == 1
 
-    assert category2.products == "55\" QLED 4K, 123000.0 руб. Остаток 7 шт.\n"
+    assert category2.products == '55" QLED 4K, 123000.0 руб. Остаток 7 шт.\n'
 
     assert category1.category_count == 2
     assert category2.category_count == 2

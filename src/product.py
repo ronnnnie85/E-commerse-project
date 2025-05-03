@@ -1,4 +1,4 @@
-from typing import Any, Optional, Self
+from typing import Any, Optional
 
 
 class Product:

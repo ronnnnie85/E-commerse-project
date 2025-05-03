@@ -30,9 +30,9 @@ def test_product_price(product, capsys):
     product.price = -1000
     assert capsys.readouterr().out == "Цена не должна быть нулевая или отрицательная\n"
 
+
 @patch("builtins.input")
 def test_product_price_low(mock_input, product, capsys):
     product.price = 1000
     mock_input.return_value = "n"
     mock_input.assert_called_once_with("Вы уверены что цена должна быть понижена?(y/n)")
-

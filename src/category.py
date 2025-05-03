@@ -57,7 +57,6 @@ class Category:
 
         return "".join(res)
 
-
     @property
     def products_in_list(self) -> list:
         return self.__products
