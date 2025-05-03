@@ -56,3 +56,8 @@ class Category:
             res.append(f"{product.name}, {product.price} руб. Остаток {product.quantity} шт.\n")
 
         return "".join(res)
+
+
+    @property
+    def products_in_list(self) -> list:
+        return self.__products
