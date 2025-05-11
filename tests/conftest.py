@@ -37,7 +37,7 @@ def test_json():
         {
             "name": "Смартфоны",
             "description": "Смартфоны, как средство не только коммуникации, "
-                           "но и получение дополнительных функций для удобства жизни",
+            "но и получение дополнительных функций для удобства жизни",
             "products": [
                 {
                     "name": "Samsung Galaxy C23 Ultra",
@@ -50,3 +50,13 @@ def test_json():
             ],
         }
     ]
+
+
+@pytest.fixture
+def new_product_dct():
+    return {
+        "name": "Samsung Galaxy S23 Ultra",
+        "description": "256GB, Серый цвет, 200MP камера",
+        "price": 160000.0,
+        "quantity": 5,
+    }

@@ -37,11 +37,11 @@ def test_load_data_from_json(mock_read, test_json):
         == "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни"
     )
 
-    assert len(result[0].products) == 3
-    assert result[0].products[0].name == "Samsung Galaxy C23 Ultra"
-    assert result[0].products[0].description == "256GB, Серый цвет, 200MP камера"
-    assert result[0].products[1].price == 210000.0
-    assert result[0].products[2].quantity == 14
+    assert len(result[0].products_in_list) == 3
+    assert result[0].products_in_list[0].name == "Samsung Galaxy C23 Ultra"
+    assert result[0].products_in_list[0].description == "256GB, Серый цвет, 200MP камера"
+    assert result[0].products_in_list[1].price == 210000.0
+    assert result[0].products_in_list[2].quantity == 14
 
 
 @patch("src.utils.read_data_json")
