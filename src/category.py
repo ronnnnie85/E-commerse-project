@@ -54,10 +54,14 @@ class Category:
         """
         res = []
         for product in self.__products:
-            res.append(f"{product.name}, {product.price} руб. Остаток {product.quantity} шт.\n")
+            res.append(f"{product}\n")
 
         return "".join(res)
 
     @property
     def products_in_list(self) -> list:
         return self.__products
+
+
+    def __str__(self):
+        return f"{self.name}, количество продуктов: {sum([product.quantity for product in self.__products])} шт."
