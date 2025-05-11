@@ -28,4 +28,7 @@ def test_add_product(category1, product):
 
 
 def test_category(category1):
-    assert str(category1) == f"{category1.name}, количество продуктов: {sum([prod.quantity for prod in category1.products_in_list])} шт."
+    assert (
+        str(category1)
+        == f"{category1.name}, количество продуктов: {sum([prod.quantity for prod in category1.products_in_list])} шт."
+    )

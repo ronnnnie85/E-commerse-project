@@ -60,8 +60,9 @@ class Category:
 
     @property
     def products_in_list(self) -> list:
+        """Возвращает список товаров категории."""
         return self.__products
 
-
-    def __str__(self):
+    def __str__(self) -> str:
+        """Возвращает строковое представление категории."""
         return f"{self.name}, количество продуктов: {sum([product.quantity for product in self.__products])} шт."
