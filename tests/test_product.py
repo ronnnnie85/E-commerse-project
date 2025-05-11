@@ -36,3 +36,7 @@ def test_product_price_low(mock_input, product, capsys):
     product.price = 1000
     mock_input.return_value = "n"
     mock_input.assert_called_once_with("Вы уверены что цена должна быть понижена?(y/n)")
+
+
+def test_product_add(product, product1):
+    assert product + product1 == product1.price * product1.quantity + product.quantity * product.price
