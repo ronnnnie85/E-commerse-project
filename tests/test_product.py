@@ -1,5 +1,7 @@
 from unittest.mock import patch
 
+import pytest
+
 from src.product import Product
 
 
@@ -11,19 +13,19 @@ def test_product(product):
 
 
 def test_new_product(new_product_dct):
-    product1 = Product.new_product(new_product_dct)
-    assert product1.name == "Samsung Galaxy S23 Ultra"
-    assert product1.price == 160000.0
-    assert product1.description == "256GB, Серый цвет, 200MP камера"
-    assert product1.quantity == 5
+    product_1 = Product.new_product(new_product_dct)
+    assert product_1.name == "Samsung Galaxy S23 Ultra"
+    assert product_1.price == 160000.0
+    assert product_1.description == "256GB, Серый цвет, 200MP камера"
+    assert product_1.quantity == 5
 
 
 def test_new_product_lst(new_product_dct, product):
-    product1 = Product.new_product(new_product_dct, [product])
-    assert product1.name == "Samsung Galaxy S23 Ultra"
-    assert product1.price == 180000.0
-    assert product1.description == "256GB, Серый цвет, 200MP камера"
-    assert product1.quantity == 10
+    product_1 = Product.new_product(new_product_dct, [product])
+    assert product_1.name == "Samsung Galaxy S23 Ultra"
+    assert product_1.price == 180000.0
+    assert product_1.description == "256GB, Серый цвет, 200MP камера"
+    assert product_1.quantity == 10
 
 
 def test_product_price(product, capsys):
@@ -40,3 +42,8 @@ def test_product_price_low(mock_input, product, capsys):
 
 def test_product_add(product, product1):
     assert product + product1 == product1.price * product1.quantity + product.quantity * product.price
+
+
+def test_product_add_err(product, smartphone1):
+    with pytest.raises(TypeError):
+        product + smartphone1
