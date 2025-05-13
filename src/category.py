@@ -47,7 +47,6 @@ class Category:
         else:
             raise TypeError
 
-
     @property
     def products(self) -> str:
         """Возвращает форматированную строку со списком товаров категории.
