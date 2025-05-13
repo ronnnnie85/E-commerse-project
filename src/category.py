@@ -44,6 +44,9 @@ class Category:
         if isinstance(product, Product):
             self.__products.append(product)
             Category.product_count += 1
+        else:
+            raise TypeError
+
 
     @property
     def products(self) -> str:
