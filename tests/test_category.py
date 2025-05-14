@@ -1,3 +1,6 @@
+import pytest
+
+
 def test_category1(category1, category2):
     assert category1.name == "Смартфоны"
     assert (
@@ -25,6 +28,11 @@ def test_category1(category1, category2):
 def test_add_product(category1, product):
     category1.add_product(product)
     assert len(category1.products_in_list) == 4
+
+
+def test_add_product_err(category1, product):
+    with pytest.raises(TypeError):
+        category1.add_product("Not a product")
 
 
 def test_category(category1):

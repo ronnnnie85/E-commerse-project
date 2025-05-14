@@ -75,8 +75,11 @@ class Product:
         """Возвращает строковое представление товара."""
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
-    def __add__(self, other: "Product") -> float:
+    def __add__(self, other: Any) -> float:
         """Складывает общую стоимость товаров (цена * количество).
         Args:
             other (Product): Другой товар для сложения."""
-        return round(float(self.price * self.quantity + other.price * other.quantity), 2)
+        if type(self) is type(other):
+            return round(float(self.price * self.quantity + other.price * other.quantity), 2)
+
+        raise TypeError
