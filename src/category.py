@@ -1,3 +1,5 @@
+from typing import Any
+
 from src.product import Product
 
 
@@ -17,11 +19,12 @@ class Category:
     name: str
     description: str
     __products: list[Product]
+    product_type: type
 
     category_count: int = 0
     product_count: int = 0
 
-    def __init__(self, name: str, description: str, products: list[Product]) -> None:
+    def __init__(self, name: str, description: str, products: list[Product], product_type: type = Product) -> None:
         """Инициализирует новый объект категории.
 
         Args:
@@ -31,21 +34,24 @@ class Category:
         """
         self.name = name
         self.description = description
-        self.__products = products
+        self.__products = []
+        self.product_type = product_type
+
+        for product in products:
+            self.add_product(product)
 
         Category.category_count += 1
-        Category.product_count += len(products)
 
-    def add_product(self, product: Product) -> None:
+    def add_product(self, product: Any) -> None:
         """Добавляет товар в категорию.
 
         Args:
             product (Product): Товар для добавления в категорию"""
-        if isinstance(product, Product):
-            self.__products.append(product)
-            Category.product_count += 1
-        else:
+
+        if not isinstance(product, self.product_type):
             raise TypeError
+        self.__products.append(product)
+        Category.product_count += 1
 
     @property
     def products(self) -> str:
