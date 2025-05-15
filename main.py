@@ -67,8 +67,8 @@
 #     else:
 #         print("Не возникла ошибка TypeError при попытке сложения")
 #
-#     category_smartphones = Category("Смартфоны", "Высокотехнологичные смартфоны", [smartphone1, smartphone2])
-#     category_grass = Category("Газонная трава", "Различные виды газонной травы", [grass1, grass2])
+#     category_smartphones = Category("Смартфоны", "Высокотехнологичные смартфоны", [smartphone1, smartphone2], Smartphone)
+#     category_grass = Category("Газонная трава", "Различные виды газонной травы", [grass1, grass2], LawnGrass)
 #
 #     category_smartphones.add_product(smartphone3)
 #
@@ -77,7 +77,7 @@
 #     print(Category.product_count)
 #
 #     try:
-#         category_smartphones.add_product("Not a product")
+#         category_smartphones.add_product(grass1)
 #     except TypeError:
 #         print("Возникла ошибка TypeError при добавлении не продукта")
 #     else:
