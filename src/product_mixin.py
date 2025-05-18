@@ -6,4 +6,5 @@ class ProductMixin:
 
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({self.name}, {self.description}, {self.price}, {self.quantity})"
+        attrs = ', '.join(f"{v}" for k, v in self.__dict__.items())
+        return f"{self.__class__.__name__}({attrs})"

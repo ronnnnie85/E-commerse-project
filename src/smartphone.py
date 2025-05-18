@@ -1,7 +1,8 @@
 from src.product import Product
+from src.product_mixin import ProductMixin
 
 
-class Smartphone(Product):
+class Smartphone(Product, ProductMixin):
     """Класс, представляющий смартфон как товар в магазине.
 
     Наследует базовый функционал класса Product и добавляет специфичные
