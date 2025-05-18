@@ -1,9 +1,10 @@
 from typing import Any, Optional
 
 from src.base_product import BaseProduct
+from src.product_mixin import ProductMixin
 
 
-class Product(BaseProduct):
+class Product(BaseProduct, ProductMixin):
     """Класс, представляющий товар.
 
     Attributes:
@@ -31,6 +32,7 @@ class Product(BaseProduct):
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
     @classmethod
     def new_product(cls, params: dict, list_products: Optional[list] = None) -> Any:
