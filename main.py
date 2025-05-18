@@ -2,13 +2,14 @@ from src.category import Category
 from src.product import Product
 from src.smartphone import Smartphone
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
     product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
     product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
 
-    smartphone1 = Smartphone("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5, 95.5,
-                             "S23 Ultra", 256, "Серый")
+    smartphone1 = Smartphone(
+        "Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5, 95.5, "S23 Ultra", 256, "Серый"
+    )
     smartphone2 = Smartphone("Iphone 15", "512GB, Gray space", 210000.0, 8, 98.2, "15", 512, "Gray space")
     smartphone3 = Smartphone("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14, 90.3, "Note 11", 1024, "Синий")
 
@@ -27,9 +28,11 @@ if __name__ == '__main__':
     print(product3.price)
     print(product3.quantity)
 
-    category1 = Category("Смартфоны",
-                         "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
-                         [product1, product2, product3])
+    category1 = Category(
+        "Смартфоны",
+        "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
+        [product1, product2, product3],
+    )
 
     print(category1.name == "Смартфоны")
     print(category1.description)
@@ -37,10 +40,12 @@ if __name__ == '__main__':
     print(category1.category_count)
     print(category1.product_count)
 
-    product4 = Product("55\" QLED 4K", "Фоновая подсветка", 123000.0, 7)
-    category2 = Category("Телевизоры",
-                         "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
-                         [product4])
+    product4 = Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7)
+    category2 = Category(
+        "Телевизоры",
+        "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
+        [product4],
+    )
 
     print(category2.name)
     print(category2.description)

@@ -1,5 +1,3 @@
-from typing import Any
-
 from src.product import Product
 
 
@@ -42,7 +40,7 @@ class Category:
 
         Category.category_count += 1
 
-    def add_product(self, product: Any) -> None:
+    def add_product(self, product: Product) -> None:
         """Добавляет товар в категорию.
 
         Args:
