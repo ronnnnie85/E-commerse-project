@@ -1,7 +1,9 @@
 from typing import Any, Optional
 
+from src.base_product import BaseProduct
 
-class Product:
+
+class Product(BaseProduct):
     """Класс, представляющий товар.
 
     Attributes:
