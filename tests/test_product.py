@@ -47,3 +47,8 @@ def test_product_add(product, product1):
 def test_product_add_err(product, smartphone1):
     with pytest.raises(TypeError):
         product + smartphone1
+
+
+def test_product_init_err():
+    with pytest.raises(ValueError):
+        Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 0)

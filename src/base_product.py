@@ -6,7 +6,7 @@ class BaseProduct(ABC):
     """Абстрактный базовый класс, определяющий интерфейс для классов продуктов."""
 
     @classmethod
-    @abstractmethod
+    @abstractmethod # pragma: no cover
     def new_product(cls, *args: Any, **kwargs: Any) -> Any:
         """
         Абстрактный метод класса для создания нового экземпляра продукта.

@@ -39,6 +39,15 @@ def category2():
 
 
 @pytest.fixture
+def category3():
+    return Category(
+        "Телевизоры",
+        "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
+        [],
+    )
+
+
+@pytest.fixture
 def test_json():
     return [
         {
