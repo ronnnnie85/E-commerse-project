@@ -1,8 +1,3 @@
-import pytest
-
-from src.exceptions import ProductTypeError
-
-
 def test_category1(category1, category2):
     assert category1.name == "Смартфоны"
     assert (
