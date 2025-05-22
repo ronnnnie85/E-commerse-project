@@ -1,7 +1,8 @@
 from src.product import Product
+from src.product_mixin import ProductMixin
 
 
-class LawnGrass(Product):
+class LawnGrass(Product, ProductMixin):
     """Класс, представляющий товар - газонную траву.
 
     Наследует базовый функционал класса Product и добавляет специфичные атрибуты.
