@@ -28,6 +28,9 @@ class Product(BaseProduct, ProductMixin):
             price (float): Цена товара.
             quantity (int): Количество единиц товара в наличии.
         """
+        if quantity == 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
+
         self.name = name
         self.description = description
         self.__price = price
