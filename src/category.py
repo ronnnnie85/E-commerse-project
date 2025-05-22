@@ -1,3 +1,4 @@
+from src.exceptions import ProductTypeError, ProductZeroError
 from src.product import Product
 
 
@@ -46,10 +47,19 @@ class Category:
         Args:
             product (Product): Товар для добавления в категорию"""
 
-        if not isinstance(product, self.product_type):
-            raise TypeError
-        self.__products.append(product)
-        Category.product_count += 1
+        try:
+            if not isinstance(product, self.product_type):
+                raise ProductTypeError("Тип добавляемого товара не соответствует типу товар категории")
+            elif product.quantity == 0:
+                raise ProductZeroError
+        except (ProductTypeError, ProductZeroError) as e:
+            print(str(e))
+        else:
+            self.__products.append(product)
+            Category.product_count += 1
+            print("Товар успешно добавлен")
+        finally:
+            print("Обработка добавления товара завершена")
 
     @property
     def products(self) -> str:
