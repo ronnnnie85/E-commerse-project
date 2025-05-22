@@ -72,3 +72,10 @@ class Category:
     def __str__(self) -> str:
         """Возвращает строковое представление категории."""
         return f"{self.name}, количество продуктов: {sum([product.quantity for product in self.__products])} шт."
+
+
+    def middle_price(self) -> float:
+        try:
+            return round(sum([el.price for el in self.__products]) / len(self.__products), 2)
+        except ZeroDivisionError:
+            return 0
