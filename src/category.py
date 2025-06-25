@@ -1,3 +1,4 @@
+from src.exceptions import ProductTypeError, ProductZeroError
 from src.product import Product
 
 
@@ -46,10 +47,19 @@ class Category:
         Args:
             product (Product): Товар для добавления в категорию"""
 
-        if not isinstance(product, self.product_type):
-            raise TypeError
-        self.__products.append(product)
-        Category.product_count += 1
+        try:
+            if not isinstance(product, self.product_type):
+                raise ProductTypeError("Тип добавляемого товара не соответствует типу товар категории")
+            elif product.quantity == 0:
+                raise ProductZeroError
+        except (ProductTypeError, ProductZeroError) as e:
+            print(str(e))
+        else:
+            self.__products.append(product)
+            Category.product_count += 1
+            print("Товар успешно добавлен")
+        finally:
+            print("Обработка добавления товара завершена")
 
     @property
     def products(self) -> str:
@@ -72,3 +82,10 @@ class Category:
     def __str__(self) -> str:
         """Возвращает строковое представление категории."""
         return f"{self.name}, количество продуктов: {sum([product.quantity for product in self.__products])} шт."
+
+    def middle_price(self) -> float:
+        """Вычисляет среднюю цену товаров в категории."""
+        try:
+            return round(sum([el.price for el in self.__products]) / len(self.__products), 2)
+        except ZeroDivisionError:
+            return 0
